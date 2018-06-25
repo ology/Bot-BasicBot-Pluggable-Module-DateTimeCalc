@@ -1,6 +1,7 @@
 Revision history for Bot-BasicBot-Pluggable-Module-DateTimeCalc
 
 {{$NEXT}}
+    - Add shutdown functionality.
 
 0.0203 2018-06-24 18:14:58
     - Improve documentation yet again...
