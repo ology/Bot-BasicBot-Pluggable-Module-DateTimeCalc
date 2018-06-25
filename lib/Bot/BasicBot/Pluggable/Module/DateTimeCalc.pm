@@ -2,7 +2,7 @@ package Bot::BasicBot::Pluggable::Module::DateTimeCalc;
 
 # ABSTRACT: Calculate date-time operations
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use strict;
 use warnings;
@@ -16,7 +16,7 @@ use DateTime::Format::DateParse;
 =head1 SYNOPSIS
 
   use Bot::BasicBot::Pluggable::Module::DateTimeCalc;
-  my $bot = Bot::BasicBot::Pluggable::Module::DateTimeCalc->new( nick => 'TimeBot', ... );
+  my $bot = Bot::BasicBot::Pluggable::Module::DateTimeCalc->new( nick => 'TimeBot', '...' );
   $bot->run();
 
 =head1 DESCRIPTION
@@ -38,7 +38,7 @@ sub help {
 
     $self->say(
         channel => $arguments->{channel},
-        body    => 'source|now|localtime $stamp|dow $stamp|diff $stamp $stamp|{add,sub}_{years,months,days} $offset $stamp',
+        body    => 'source|now|localtime $stamp|dow $stamp|diff $stamp $stamp|{add,sub}_{years,months,days,hours,minutes,seconds} $offset $stamp',
     );
 }
 
@@ -59,17 +59,15 @@ sub said {
     if ( $arguments->{address} ) {
         # Return the source code link
         if ( $arguments->{body} =~ /^source$/ ) {
-            $body = 'https://github.com/ology/Miscellaneous/blob/master/TimeBot';
+            $body = 'https://github.com/ology/Bot-BasicBot-Pluggable-Module-DateTimeCalc';
         }
         # Return the current time
         elsif ( $arguments->{body} =~ /^now$/ ) {
             $body = DateTime->now( time_zone => 'local' );
         }
         # Return the localtime string of a given timestamp
-        elsif ( $arguments->{body} =~ /^localtime $re$/ ) {
-            my $capture = _capture($1);
-
-            $body = scalar( localtime UnixDate( $capture, '%s') );
+        elsif ( $arguments->{body} =~ /^localtime (\d+)$/ ) {
+            $body = scalar localtime $1;
         }
         # Return the day of the week of a given timestamp
         elsif ( $arguments->{body} =~ /^dow $re$/ ) {
@@ -130,12 +128,41 @@ sub _to_dt {
     return $dt;
 }
 
+=head1 IRC COMMANDS
+
+=head2 source
+
+Return the github repository where this is hosted.
+
+=head2 now
+
+Return the current date and time.
+
+=head2 localtime
+
+Return the date-time string given an epoch time.
+
+=head2 dow
+
+Return the day of the week for the given date-time stamp.
+
+=head2 diff
+
+Return a duration string in days, hours, minutes and seconds from two date-time
+stamps.
+
+=head2 {add,sub}_{years,months,days,hours,minutes,seconds}
+
+Add or subract the the given span from the given date-time stamp.
+
+=cut
+
 1;
 __END__
 
 =head1 SEE ALSO
 
-L<Bot::BasicBot::Pluggable::Module>
+L<Bot::BasicBot::Pluggable>
 
 L<Date::Manip>
 
