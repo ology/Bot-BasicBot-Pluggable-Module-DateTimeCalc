@@ -2,7 +2,7 @@ package Bot::BasicBot::Pluggable::Module::DateTimeCalc;
 
 # ABSTRACT: Calculate date-time operations
 
-our $VERSION = '0.02';
+our $VERSION = '0.0201';
 
 use strict;
 use warnings;
@@ -21,7 +21,11 @@ use DateTime::Format::DateParse;
 
 =head1 DESCRIPTION
 
-A C<Bot::BasicBot::Pluggable::Module::DateTimeCalc> calculates date-time operations.
+A C<Bot::BasicBot::Pluggable::Module::DateTimeCalc> calculates date-time
+operations.
+
+Since this module uses L<Date::Manip>, many different date-time formats are
+supported.
 
 =cut
 
@@ -132,26 +136,38 @@ sub _to_dt {
 
 =head2 source
 
+  > TimeBot: source
+
 Return the github repository where this is hosted.
 
 =head2 now
+
+  > TimeBot: now
 
 Return the current date and time.
 
 =head2 localtime
 
+  > TimeBot: localtime 123456
+
 Return the date-time string given an epoch time.
 
 =head2 dow
+
+  > TimeBot: dow 2018-06-24
 
 Return the day of the week for the given date-time stamp.
 
 =head2 diff
 
+  > TimeBot: diff '2018-06-24 17:51:17' '1/2/2032'
+
 Return a duration string in days, hours, minutes and seconds from two date-time
 stamps.
 
 =head2 {add,sub}_{years,months,days,hours,minutes,seconds}
+
+  > add_days '1/2/2032'
 
 Add or subtract the the given span from the given date-time stamp.
 
