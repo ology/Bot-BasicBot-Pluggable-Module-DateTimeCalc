@@ -2,7 +2,7 @@ package Bot::BasicBot::Pluggable::Module::DateTimeCalc;
 
 # ABSTRACT: Calculate date-time operations
 
-our $VERSION = '0.0301';
+our $VERSION = '0.0302';
 
 use strict;
 use warnings;
@@ -33,9 +33,13 @@ supported.
 
 =head1 METHODS
 
+=head2 new()
+
+Create a new C<Bot::BasicBot::Pluggable::Module::DateTimeCalc> object.
+
 =head2 help()
 
-Show the keyword help text.
+Show the keyword help message.
 
 =cut
 
@@ -138,6 +142,12 @@ sub _to_dt {
 }
 
 =head1 IRC COMMANDS
+
+=head2 help
+
+  > TimeBot: help
+
+Show the keyword help message.
 
 =head2 source
 
