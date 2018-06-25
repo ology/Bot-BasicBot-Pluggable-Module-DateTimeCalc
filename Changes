@@ -1,6 +1,8 @@
 Revision history for Bot-BasicBot-Pluggable-Module-DateTimeCalc
 
 {{$NEXT}}
+
+0.0301 2018-06-24 21:58:06
     - Fix docs.
     - Use the BasicBot default quit message.
 
