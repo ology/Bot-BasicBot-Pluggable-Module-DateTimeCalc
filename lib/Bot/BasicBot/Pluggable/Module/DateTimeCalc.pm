@@ -153,7 +153,7 @@ stamps.
 
 =head2 {add,sub}_{years,months,days,hours,minutes,seconds}
 
-Add or subract the the given span from the given date-time stamp.
+Add or subtract the the given span from the given date-time stamp.
 
 =cut
 
