@@ -2,7 +2,7 @@ package Bot::BasicBot::Pluggable::Module::DateTimeCalc;
 
 # ABSTRACT: Calculate date-time operations
 
-our $VERSION = '0.0203';
+our $VERSION = '0.03';
 
 use strict;
 use warnings;
@@ -110,13 +110,16 @@ sub said {
 
             $body = $dt->$method( $span => $3 );
         }
+        # Exit IRC
+        elsif ( $arguments->{body} =~ /^leave$/ ) {
+            $self->shutdown('I have done my job here.');
+            exit;
+        }
 
         $self->say(
             channel => $arguments->{channel},
             body    => $body,
         );
-
-#        $self->shutdown('I have done my job here.');
     }
 }
 
@@ -172,6 +175,12 @@ stamps.
   > TimeBot: add_days 3 '1/2/2032'
 
 Add or subtract the the given span from the given date-time stamp.
+
+=head2 leave
+
+  > TimeBot: leave
+
+Exit the IRC and the running process.
 
 =cut
 
