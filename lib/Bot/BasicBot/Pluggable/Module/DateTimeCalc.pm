@@ -2,7 +2,7 @@ package Bot::BasicBot::Pluggable::Module::DateTimeCalc;
 
 # ABSTRACT: Calculate date-time operations
 
-our $VERSION = '0.0201';
+our $VERSION = '0.0202';
 
 use strict;
 use warnings;
@@ -23,6 +23,8 @@ use DateTime::Format::DateParse;
 
 A C<Bot::BasicBot::Pluggable::Module::DateTimeCalc> calculates date-time
 operations.
+
+This bot is coded to only respond when directly addressed, btw.
 
 Since this module uses L<Date::Manip>, many different date-time formats are
 supported.
@@ -167,7 +169,7 @@ stamps.
 
 =head2 {add,sub}_{years,months,days,hours,minutes,seconds}
 
-  > add_days '1/2/2032'
+  > TimeBot: add_days '1/2/2032'
 
 Add or subtract the the given span from the given date-time stamp.
 
