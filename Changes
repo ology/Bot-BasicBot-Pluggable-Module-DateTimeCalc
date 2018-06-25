@@ -2,6 +2,9 @@ Revision history for Bot-BasicBot-Pluggable-Module-DateTimeCalc
 
 {{$NEXT}}
     - Improve documentation.
+
+0.02 2018-06-24 17:43:32
+    - Improve documentation.
     - Correct the localtime operation.
 
 0.01 2018-06-24 17:13:19
