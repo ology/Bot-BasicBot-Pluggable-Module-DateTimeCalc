@@ -112,7 +112,7 @@ sub said {
         }
         # Exit IRC
         elsif ( $arguments->{body} =~ /^leave$/ ) {
-            $self->shutdown( $bot->quit_message() );
+            $self->shutdown( $self->quit_message() );
             exit;
         }
 
