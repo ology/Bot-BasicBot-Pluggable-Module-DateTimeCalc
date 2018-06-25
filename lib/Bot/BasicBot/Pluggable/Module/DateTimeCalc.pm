@@ -2,7 +2,7 @@ package Bot::BasicBot::Pluggable::Module::DateTimeCalc;
 
 # ABSTRACT: Calculate date-time operations
 
-our $VERSION = '0.03';
+our $VERSION = '0.0301';
 
 use strict;
 use warnings;
@@ -44,7 +44,7 @@ sub help {
 
     $self->say(
         channel => $arguments->{channel},
-        body    => 'source|now|localtime $stamp|dow $stamp|diff $stamp $stamp|{add,sub}_{years,months,days,hours,minutes,seconds} $offset $stamp',
+        body    => 'source|now|localtime $epoch|dow $stamp|diff $stamp $stamp|{add,sub}_{years,months,days,hours,minutes,seconds} $offset $stamp',
     );
 }
 
