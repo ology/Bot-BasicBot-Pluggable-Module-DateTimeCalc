@@ -1,6 +1,8 @@
 Revision history for Bot-BasicBot-Pluggable-Module-DateTimeCalc
 
 {{$NEXT}}
+    - Improve documentation synopsis.
+    - Add can_ok() tests.
 
 0.0302 2018-06-24 22:53:16
     - Improve documentation yet again...
