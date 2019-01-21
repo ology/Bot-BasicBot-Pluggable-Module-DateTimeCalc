@@ -134,6 +134,12 @@ sub said {
     }
 }
 
+=head2 run()
+
+Start the process and connect to the IRC.
+
+=cut
+
 sub _capture {
     my ($string) = @_;
     $string =~ s/['"]//g;
