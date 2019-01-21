@@ -2,7 +2,7 @@ package Bot::BasicBot::Pluggable::Module::DateTimeCalc;
 
 # ABSTRACT: Calculate date-time operations
 
-our $VERSION = '0.0302';
+our $VERSION = '0.0303';
 
 use strict;
 use warnings;
@@ -16,7 +16,14 @@ use DateTime::Format::DateParse;
 =head1 SYNOPSIS
 
   use Bot::BasicBot::Pluggable::Module::DateTimeCalc;
-  my $bot = Bot::BasicBot::Pluggable::Module::DateTimeCalc->new( nick => 'TimeBot', '...' );
+  my $bot = Bot::BasicBot::Pluggable::Module::DateTimeCalc->new(
+    server      => 'irc.somewhere.org',
+    port        => '6667',
+    channels    => ['#bots'],
+    nick        => 'TimeBot',
+    name        => 'Your Name Bot',
+    ignore_list => [qw/other_bot some_fool/],
+  );
   $bot->run();
 
 =head1 DESCRIPTION
