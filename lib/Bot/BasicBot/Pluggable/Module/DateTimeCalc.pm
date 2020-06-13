@@ -9,9 +9,8 @@ use warnings;
 
 use base qw(Bot::BasicBot::Pluggable);
 
-use Date::Manip;
 use DateTime;
-use DateTime::Format::DateParse;
+use DateTime::Format::Natural;
 
 =head1 SYNOPSIS
 
@@ -24,7 +23,7 @@ use DateTime::Format::DateParse;
     name        => 'Your Name Bot',
     ignore_list => [qw/other_bot some_fool/],
   );
-  $bot->run();
+  $bot->run;
 
 =head1 DESCRIPTION
 
@@ -33,18 +32,18 @@ operations.
 
 This bot is coded to only respond when directly addressed, btw.
 
-Since this module uses L<Date::Manip>, many different date-time formats are
-supported.
+Since this module uses L<DateTime::Format::Natural>, many different
+date-time formats are supported.
 
 =cut
 
 =head1 METHODS
 
-=head2 new()
+=head2 new
 
 Create a new C<Bot::BasicBot::Pluggable::Module::DateTimeCalc> object.
 
-=head2 help()
+=head2 help
 
 Show the keyword help message.
 
@@ -59,7 +58,7 @@ sub help {
     );
 }
 
-=head2 said()
+=head2 said
 
 Process the date-time calculations.
 
@@ -123,7 +122,7 @@ sub said {
         }
         # Exit IRC
         elsif ( $arguments->{body} =~ /^leave$/ ) {
-            $self->shutdown( $self->quit_message() );
+            $self->shutdown( $self->quit_message );
             exit;
         }
 
@@ -134,7 +133,7 @@ sub said {
     }
 }
 
-=head2 run()
+=head2 run
 
 Start the process and connect to the IRC.
 
@@ -148,9 +147,8 @@ sub _capture {
 
 sub _to_dt {
     my($capture) = @_;
-    my $format = '%Y-%m-%dT%H:%M:%S';
-    my $stamp = UnixDate( $capture, $format );
-    my $dt = DateTime::Format::DateParse->parse_datetime($stamp);
+    my $parser = DateTime::Format::Natural->new;
+    my $dt = $parser->parse_datetime($capture);
     return $dt;
 }
 
@@ -214,10 +212,8 @@ __END__
 
 L<Bot::BasicBot::Pluggable>
 
-L<Date::Manip>
-
 L<DateTime>
 
-L<DateTime::Format::DateParse>
+L<DateTime::Format::Natural>
 
 =cut
