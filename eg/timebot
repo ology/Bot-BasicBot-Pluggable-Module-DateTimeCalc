@@ -9,6 +9,7 @@ my $port = shift || '6667';
 my $channel = shift || '#bottest';
 
 my $bot = Bot::BasicBot::Pluggable::Module::DateTimeCalc->new(
+#    loglevel    => 'trace',
     server      => $server,
     port        => $port,
     channels    => [ $channel ],
