@@ -2,13 +2,16 @@
 use strict;
 use warnings;
 
-use lib map { "$ENV{HOME}/sandbox/$_/lib" } qw(Bot-BasicBot-Pluggable-Module-DateTimeCalc);
 use Bot::BasicBot::Pluggable::Module::DateTimeCalc;
 
+my $server = shift || 'irc.perl.org';
+my $port = shift || '6667';
+my $channel = shift || '#bottest';
+
 my $bot = Bot::BasicBot::Pluggable::Module::DateTimeCalc->new(
-    server      => 'irc.perl.org',
-    port        => '6667',
-    channels    => ['#bottest'],
+    server      => $server,
+    port        => $port,
+    channels    => [ $channel ],
     nick        => 'TimeBot',
     name        => 'Time Bot',
     ignore_list => [],
