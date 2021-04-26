@@ -16,6 +16,7 @@ my $bot = Bot::BasicBot::Pluggable::Module::DateTimeCalc->new(
     nick        => 'TimeBot',
     name        => 'Time Bot',
     ignore_list => [],
+#    ssl         => 1,
 );
 
 $bot->run;
